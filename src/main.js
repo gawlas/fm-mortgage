@@ -1,3 +1,5 @@
+import {calculateRepaymentMortgage, calculateInterestOnlyMortgage} from "./scripts/mortgage.js";
+
 function validateForm() {
     let isValid = true;
 
@@ -51,6 +53,33 @@ function onSubmit() {
     if (isValid) {
         document.querySelector(".js-result").classList.add("hidden");
         document.querySelector(".js-result-filled").classList.remove("hidden");
+
+        const amount = Number(document.querySelector(".js-amount").value)
+        const term = Number(document.querySelector(".js-term").value)
+        const rate = Number(document.querySelector(".js-rate").value) / 100;
+        const mortgageType = document.querySelector('input[name="mortgage"]:checked').value;
+
+        let formatter = new Intl.NumberFormat('en', {
+            style: 'currency',
+            currency: 'GBP',
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
+
+        if (mortgageType === "repayment") {
+            const result = calculateRepaymentMortgage(amount, rate, term);
+            document.querySelector(".js-monthly").innerHTML = formatter.format(result.monthly);
+            document.querySelector(".js-total").innerHTML = formatter.format(result.total);
+        }
+
+        if (mortgageType === "interest") {
+            const result = calculateInterestOnlyMortgage(amount, rate, term);
+            document.querySelector(".js-monthly").innerHTML = formatter.format(result.monthly);
+            document.querySelector(".js-total").innerHTML = formatter.format(result.total);
+        }
+    } else {
+        document.querySelector(".js-result").classList.remove("hidden");
+        document.querySelector(".js-result-filled").classList.add("hidden");
     }
 }
 
@@ -67,6 +96,9 @@ function resetForm() {
     document.querySelector(".js-term-block").classList.remove('form-elements__invalid');
     document.querySelector(".js-rate-block").classList.remove('form-elements__invalid');
     document.querySelector(".js-mortgage-type").classList.remove('form-elements__invalid');
+
+    document.querySelector(".js-result").classList.remove("hidden");
+    document.querySelector(".js-result-filled").classList.add("hidden");
 }
 
 function registerCalculateClick() {
@@ -100,6 +132,7 @@ function registerInputEvents() {
         document.querySelector(".js-mortgage-type").classList.remove('form-elements__invalid');
     });
 }
+
 
 registerCalculateClick();
 registerResetClick();
