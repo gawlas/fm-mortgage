@@ -152,7 +152,6 @@ body {
         border-bottom-left-radius: var(--space-px-300);
         border-bottom-right-radius: var(--space-px-300);
         padding: var(--space-px-500);
-        gap: var(--space-px-500);
     }
 
     .calculator__result-section-filled {
