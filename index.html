@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="desc">
+  <title>Vite App</title>
+
+  <link rel="stylesheet" href="/src/styles/style.css">
+  <script type="module" src="/src/main.js"></script>
+</head>
+<body>
+<div class="container">
+  <main class="calculator">
+    <div class="calculator__form-section">
+      <header class="calculator__form-section-header">
+        <h1 class="calculator__header-main">Mortgage Calculator</h1>
+        <a href="#" class="calculator__link js-reset">Clear All</a>
+      </header>
+      <form class="calculator__form js-form">
+        <div class="form-elements--input-block js-amount-block">
+          <label class="form-elements--input-label" for="amount">Mortgage Amount</label>
+          <div class="form-elements--input-container">
+            <span class="form-elements--input-prefix">£</span>
+            <input class="form-elements--input js-amount" id="amount" type="number">
+          </div>
+          <p class="form-elements--error-label">This field is required</p>
+        </div>
+
+        <div class="form-elements--input-group">
+          <div class="form-elements--input-block js-term-block">
+            <label class="form-elements--input-label" for="term">Mortgage Term</label>
+            <div class="form-elements--input-container">
+              <input class="form-elements--input js-term" id="term" type="number">
+              <span class="form-elements--input-suffix">years</span>
+            </div>
+            <p class="form-elements--error-label">This field is required</p>
+          </div>
+
+          <div class="form-elements--input-block js-rate-block">
+            <label class="form-elements--input-label" for="rate">Interest Rate</label>
+            <div class="form-elements--input-container">
+              <input class="form-elements--input js-rate" id="rate" type="number">
+              <span class="form-elements--input-suffix">%</span>
+            </div>
+            <p class="form-elements--error-label">This field is required</p>
+          </div>
+        </div>
+
+        <div class="form-elements--radio-group js-mortgage-type">
+          <label class="form-elements--radio-group-label">Mortgage Type</label>
+
+          <label class="form-elements--radio-container">
+            <input class="form-elements--radio js-radios js-repayment" type="radio" id="repayment" name="mortgage" value="repayment"/>
+            <span class="form-elements--radio-label">Repayment</span>
+          </label>
+          <label class="form-elements--radio-container">
+            <input class="form-elements--radio js-radios js-interest" type="radio" id="interest" name="mortgage" value="interest"/>
+            <span class="form-elements--radio-label">Interest Only</span>
+          </label>
+
+          <p class="form-elements--error-label">This field is required</p>
+        </div>
+      </form>
+      <button class="form-elements__button js-calculate-button"><img src="/src/assets/img/icon-calculator.svg" alt="calculator icon">
+        Calculate Repayments
+      </button>
+    </div>
+    <div class="calculator__result-section js-result">
+      <img class="calculator__result-img" src="/src/assets/img/illustration-empty.svg"
+           alt="illustration of a calculator with cash around">
+      <h2 class="calculator__result-header">Results shown here</h2>
+      <p>Complete the form and click “calculate repayments” to see what your monthly repayments would be.</p>
+    </div>
+    <div class="calculator__result-section-filled hidden js-result-filled">
+      <div class="calculator__your-result">
+        <h2 class="calculator__result-header">Your Results</h2>
+        <p>Your results are shown below based on the information you provided. To adjust the results, edit the form and click “calculate repayments” again.</p>
+      </div>
+      <div class="calculator__result-table">
+        <div class="calculator__table-monthly-section">
+          <p>Your monthly repayments</p>
+          <p class="calculator__table-monthly-payment">£1,797.74</p>
+        </div>
+        <hr class="calculator__table-divider">
+        <div class="calculator__table-yearly-section">
+          <p>Total you'll repay over the term</p>
+          <p class="calculator__table-total-amount">£539,322.94</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>
